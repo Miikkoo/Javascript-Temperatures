@@ -1,23 +1,59 @@
-<!DOCTYPE html>
 <html>
-<title>Fahrenheit to Celcius Temperature Converter</title>
-<body>
+	<head>
+		<script>
+			
+			function fToC(){
+				var fahrenheit = document.getElementById("fahrenheit").value;
+				var celsius;
+				if(fahrenheit != ''){
+					celsius = (fahrenheit - 32) * 5/9;
+					document.getElementById("outputC").innerHTML = celsius;
+				}else{
+					document.getElementById("outputC").innerHTML = "Please enter a value!";
+				}
+			}
+            
+            function cToF(){
+				var celsius = document.getElementById("celcius").value;
+				var fahrenheit;
+				if(celsius != ''){
+					fahrenheit = celsius * 9 / 5 + 32;
+					document.getElementById("outputF").innerHTML = fahrenheit;
+				}else{
+					document.getElementById("outputF").innerHTML = "Please enter a value!";
+				}
+			}
+			
 
-<h2>Temperature Converter</h2>
-<p>Type a value in the Fahrenheit field to convert the value to Celsius:</p>
-
-<p>
-  <label>Fahrenheit</label>
-  <input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
-</p>
-<p>Celcius: <span id="outputCelcius"></span></p>
-
-<script>
-function temperatureConverter(valNum) {
-  valNum = parseFloat(valNum);
-  document.getElementById("outputCelcius").innerHTML=(valNum-32)/1.8;
-}
-</script>
-
-</body>
+			function allowOnlyNumbers(evt) {
+				evt = (evt) ? evt : window.event;
+				var charCode = (evt.which) ? evt.which : evt.keyCode;
+				if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+					return false;
+				}
+				return true;
+			}
+		
+		</script>
+        
+	</head>
+	<body>
+		<h2>Enter the F Value</h2>
+		<input type="text" id="fahrenheit" onkeypress="return allowOnlyNumbers()" />
+        <p></p>
+		<button onclick="fToC()" >F to C</button>
+ 
+		<h4>Output: <span id="outputC"></span></h4>
+        
+        <p></p>
+        <p></p>
+        
+        <h2>Enter the C Value</h2>
+		<input type="text" id="celcius" onkeypress="return allowOnlyNumbers()" />
+        <p></p>
+		<button onclick="cToF()" >C to F</button>
+ 
+		<h4>Output: <span id="outputF"></span></h4>
+        
+	</body>
 </html>
