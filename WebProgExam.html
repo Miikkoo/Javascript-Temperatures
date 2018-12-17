@@ -1,5 +1,14 @@
 <html>
 	<head>
+        <style>
+            div {
+                border-style: solid;
+                border-width: thin;
+                padding: 10px;  
+                display: inline-block;
+            }
+        </style>
+
 		<script>
 			
 			function fToC(){
@@ -7,9 +16,9 @@
 				var celsius;
 				if(fahrenheit != ''){
 					celsius = (fahrenheit - 32) * 5/9;
-					document.getElementById("outputC").innerHTML = celsius;
+					alert(celsius);
 				}else{
-					document.getElementById("outputC").innerHTML = "Please enter a value!";
+					alert("Please enter a value!");
 				}
 			}
             
@@ -18,13 +27,12 @@
 				var fahrenheit;
 				if(celsius != ''){
 					fahrenheit = celsius * 9 / 5 + 32;
-					document.getElementById("outputF").innerHTML = fahrenheit;
+					alert(fahrenheit);
 				}else{
-					document.getElementById("outputF").innerHTML = "Please enter a value!";
+					alert("Please enter a value!");
 				}
 			}
 			
-
 			function allowOnlyNumbers(evt) {
 				evt = (evt) ? evt : window.event;
 				var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -34,26 +42,24 @@
 				return true;
 			}
 		
-		</script>
-        
+		</script>  
 	</head>
+    
 	<body>
+        <div>
 		<h2>Enter the F Value</h2>
 		<input type="text" id="fahrenheit" onkeypress="return allowOnlyNumbers()" />
         <p></p>
 		<button onclick="fToC()" >F to C</button>
- 
-		<h4>Output: <span id="outputC"></span></h4>
+        </div>
         
-        <p></p>
-        <p></p>
-        
+        <div>
         <h2>Enter the C Value</h2>
 		<input type="text" id="celcius" onkeypress="return allowOnlyNumbers()" />
         <p></p>
 		<button onclick="cToF()" >C to F</button>
- 
-		<h4>Output: <span id="outputF"></span></h4>
+        </div>
         
 	</body>
+    
 </html>
